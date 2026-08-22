@@ -44,8 +44,8 @@ module.exports = {
       category: 'Technology',
       organizer: 'admin@example.com',
       date: '2026-09-15T18:00:00',
-      city: 'Alexandria',
-      venue: 'Alexandria Library',
+      city: 'Atlanta',
+      venue: 'Atlanta Convention Center',
       capacity: 100
     },
     {
@@ -54,8 +54,8 @@ module.exports = {
       category: 'Business',
       organizer: 'admin@example.com',
       date: '2026-10-01T17:00:00',
-      city: 'Alexandria',
-      venue: 'Bibliotheca Alexandria',
+      city: 'Paris',
+      venue: 'Carrousel du Louvre',
       capacity: 150
     },
     {
@@ -74,8 +74,8 @@ module.exports = {
     category: 'Business',
     organizer: 'admin@example.com',
     date: '2026-11-05T10:00:00',
-    city: 'Alexandria',
-    venue: 'San Stefano Grand Plaza',
+    city: 'Pasay',
+    venue: 'SMX Convention Center Manila',
     capacity: 250
     }
   ]
