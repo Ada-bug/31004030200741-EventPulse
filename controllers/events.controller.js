@@ -6,7 +6,7 @@ const Category = require('../models/category.model');
 const User = require('../models/user.model');
 const Registration = require('../models/registration.model')
 
-// getEvents
+// GET /api/events
 const getEvents = asyncHandler(async (req, res) => {
     const {
         startDate,
@@ -178,7 +178,7 @@ const getEvents = asyncHandler(async (req, res) => {
     });
 });
 
-// getEventById
+// GET /api/events/:id
 const getEventById = asyncHandler(async (req, res) => {
     // Validate event ID
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -202,7 +202,7 @@ const getEventById = asyncHandler(async (req, res) => {
     });
 });
 
-// createEvent
+// POST /api/events
 const createEvent = asyncHandler(async (req, res) => {
     // Validate category ID
     if (!mongoose.Types.ObjectId.isValid(req.body.category)) {
@@ -240,7 +240,7 @@ const createEvent = asyncHandler(async (req, res) => {
     });
 });
 
-// updateEvent
+// PATCH /api/events/:id
 const updateEvent = asyncHandler(async (req, res) => {
     // Validate event ID
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -285,7 +285,7 @@ const updateEvent = asyncHandler(async (req, res) => {
     });
 });
 
-// deleteEvent
+// DELETE /api/events/:id
 const deleteEvent = asyncHandler(async (req, res) => {
     // Validate event ID
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
