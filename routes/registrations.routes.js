@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const requireAuth = require('../middleware/requireAuth');
-const requireRole = require('../middleware/requireRole');
 const ctrl = require('../controllers/registrations.controller');
 
 router.post('/', requireAuth, ctrl.registerForEvent);

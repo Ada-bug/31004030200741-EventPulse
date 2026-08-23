@@ -1,37 +1,84 @@
-const appConfig = require("./config/appConfig");
+const appConfig = require('./config/appConfig');
 
 const express = require('express');
-const morgan  = require('morgan');
+const http = require('http');
+const { Server } = require('socket.io');
+
+const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
+
 const app = express();
+
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const eventRoutes = require('./routes/events.routes');
-const registrationRoutes = require('./routes/registrations.routes')
+const registrationRoutes = require('./routes/registrations.routes');
+const announcementRoutes = require('./routes/announcements.routes')
 
-// Run before routes
+
+// Create HTTP server from Express app
+const httpServer = http.createServer(app);
+
+
+// Initialize Socket.io
+const io = new Server(httpServer, {
+  cors: {
+    origin: '*',
+  },
+});
+
+
+// Make io accessible in controllers
+app.set('io', io);
+
+
+// Socket.io events
+io.on('connection', (socket) => {
+  console.log('Socket connected:', socket.id);
+
+  socket.on('join-event', (eventId) => {
+    socket.join(eventId);
+    console.log(`${socket.id} joined event room ${eventId}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected:', socket.id);
+  });
+});
+
+// Middleware
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(mongoSanitize());
+app.use(express.static('public'));
 
-// Route mounting
+// Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/events', eventRoutes)
+app.use('/api/events', eventRoutes);
 app.use('/api/registrations', registrationRoutes);
-// more routes will be mounted here later
+app.use('/api/announcements', announcementRoutes);
 
+
+// 404 handler
 app.use((req, res, next) => {
-  res.status(404).json({ status: 'fail', message: 'Route not found' });
+  res.status(404).json({
+    status: 'fail',
+    message: 'Route not found',
+  });
 });
 
+
+// Error handler
 app.use(errorHandler);
+
 
 async function start() {
   await connectDB();
-  app.listen(appConfig.port, () => {
+
+  httpServer.listen(appConfig.port, () => {
     console.log(`Server running on port ${appConfig.port}`);
   });
 }
