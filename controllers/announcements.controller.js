@@ -20,7 +20,7 @@ const createAnnouncement = asyncHandler(async (req, res) => {
   res.status(201).json({ status: "success", data: message });
 });
 
-// GET /api/announcements/:id
+// GET /api/announcements/:eventId
 const getAnnouncements = asyncHandler(async (req, res) => {
 
   const { eventId } = req.params;

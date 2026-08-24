@@ -47,7 +47,7 @@ const getEvents = asyncHandler(async (req, res) => {
             const start = new Date(startDate);
 
             if (isNaN(start.getTime())) {
-                return res.status(400).json({ status: "error", message: "Invalid startDate" });
+                throw new AppError('Invalid startDate', 400);
             }
 
             filter.date.$gte = start;
@@ -57,10 +57,7 @@ const getEvents = asyncHandler(async (req, res) => {
             const end = new Date(endDate);
 
             if (isNaN(end.getTime())) {
-                return res.status(400).json({
-                    status: "error",
-                    message: "Invalid endDate",
-                });
+                throw new AppError('Invalid endDate', 400);
             }
 
             // Include the entire end date

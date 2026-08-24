@@ -8,20 +8,18 @@ const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
+const AppError = require('./utils/AppError');
 
 const app = express();
-
 
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const eventRoutes = require('./routes/events.routes');
 const registrationRoutes = require('./routes/registrations.routes');
-const announcementRoutes = require('./routes/announcements.routes')
-
+const announcementRoutes = require('./routes/announcements.routes');
 
 // Create HTTP server from Express app
 const httpServer = http.createServer(app);
-
 
 // Initialize Socket.io
 const io = new Server(httpServer, {
@@ -30,10 +28,8 @@ const io = new Server(httpServer, {
   },
 });
 
-
 // Make io accessible in controllers
 app.set('io', io);
-
 
 // Socket.io events
 io.on('connection', (socket) => {
@@ -61,19 +57,13 @@ app.use('/api/events', eventRoutes);
 app.use('/api/registrations', registrationRoutes);
 app.use('/api/announcements', announcementRoutes);
 
-
 // 404 handler
 app.use((req, res, next) => {
-  res.status(404).json({
-    status: 'fail',
-    message: 'Route not found',
-  });
+  next(new AppError('Route not found', 404));
 });
-
 
 // Error handler
 app.use(errorHandler);
-
 
 async function start() {
   await connectDB();
@@ -83,4 +73,8 @@ async function start() {
   });
 }
 
-start();
+if (require.main === module) {
+  start();
+}
+
+module.exports = app;

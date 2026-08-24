@@ -1,4 +1,5 @@
 const appConfig = require("../config/appConfig");
+const AppError = require('../utils/AppError');
 
 function errorHandler(err, req, res, next) {
   let statusCode = err.statusCode || 500;
@@ -17,6 +18,12 @@ function errorHandler(err, req, res, next) {
   if (err.code === 11000) {
     statusCode = 409;
     message = 'Duplicate field value. This record already exists.';
+  }
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      message: err.message,
+    });
   }
 
   res.status(statusCode).json({
