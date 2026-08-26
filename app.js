@@ -1,4 +1,6 @@
 const appConfig = require('./config/appConfig');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 
 const express = require('express');
 const http = require('http');
@@ -10,6 +12,8 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/AppError');
 const app = express();
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 let dbStatus = 'disconnected';
 
