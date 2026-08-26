@@ -14,12 +14,33 @@ const AppError = require('./utils/AppError');
 const app = express();
 
 // Swagger
-app.use(
-  '/api-docs',
-  swaggerUi.serveFiles(swaggerSpec),
-  swaggerUi.setup(swaggerSpec)
-);
+const path = require('path');
+const swaggerUiDist = require('swagger-ui-dist');
 
+app.get('/api-docs/swagger-ui-bundle.js', (req, res) => {
+  res.sendFile(
+    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui-bundle.js')
+  );
+});
+
+app.get('/api-docs/swagger-ui-standalone-preset.js', (req, res) => {
+  res.sendFile(
+    path.join(
+      swaggerUiDist.getAbsoluteFSPath(),
+      'swagger-ui-standalone-preset.js'
+    )
+  );
+});
+
+app.get('/api-docs/swagger-ui.css', (req, res) => {
+  res.sendFile(
+    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui.css')
+  );
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// For that thing a little below
 let dbStatus = 'disconnected';
 
 // For Vercel ig
