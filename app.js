@@ -13,6 +13,18 @@ const app = express();
 
 let dbStatus = 'disconnected';
 
+// For Vercel ig
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    dbStatus = 'connected';
+    next();
+  } catch (error) {
+    dbStatus = 'disconnected';
+    next(error);
+  }
+});
+
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const eventRoutes = require('./routes/events.routes');
