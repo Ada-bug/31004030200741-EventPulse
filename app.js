@@ -1,6 +1,4 @@
 const appConfig = require('./config/appConfig');
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpec = require('./config/swagger');
 
 const express = require('express');
 const http = require('http');
@@ -13,20 +11,43 @@ const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/AppError');
 const app = express();
 
-// Swagger
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const swaggerUiDist = require('swagger-ui-dist');
 
-app.use(
-  '/api-docs',
-  express.static(swaggerUiDist.getAbsoluteFSPath())
-);
+// Swagger static assets
+app.get('/api-docs/swagger-ui.css', (req, res) => {
+  res.type('text/css');
+  res.sendFile(
+    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui.css')
+  );
+});
 
+app.get('/api-docs/swagger-ui-bundle.js', (req, res) => {
+  res.type('application/javascript');
+  res.sendFile(
+    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui-bundle.js')
+  );
+});
+
+app.get('/api-docs/swagger-ui-standalone-preset.js', (req, res) => {
+  res.type('application/javascript');
+  res.sendFile(
+    path.join(
+      swaggerUiDist.getAbsoluteFSPath(),
+      'swagger-ui-standalone-preset.js'
+    )
+  );
+});
+
+// Swagger UI
 app.use(
   '/api-docs',
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec)
 );
+
 
 // For that thing a little below
 let dbStatus = 'disconnected';
