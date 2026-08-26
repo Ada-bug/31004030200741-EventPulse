@@ -13,7 +13,12 @@ const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/AppError');
 const app = express();
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Swagger
+app.use(
+  '/api-docs',
+  swaggerUi.serveFiles(swaggerSpec),
+  swaggerUi.setup(swaggerSpec)
+);
 
 let dbStatus = 'disconnected';
 
