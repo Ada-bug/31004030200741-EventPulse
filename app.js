@@ -17,28 +17,16 @@ const app = express();
 const path = require('path');
 const swaggerUiDist = require('swagger-ui-dist');
 
-app.get('/api-docs/swagger-ui-bundle.js', (req, res) => {
-  res.sendFile(
-    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui-bundle.js')
-  );
-});
+app.use(
+  '/api-docs',
+  express.static(swaggerUiDist.getAbsoluteFSPath())
+);
 
-app.get('/api-docs/swagger-ui-standalone-preset.js', (req, res) => {
-  res.sendFile(
-    path.join(
-      swaggerUiDist.getAbsoluteFSPath(),
-      'swagger-ui-standalone-preset.js'
-    )
-  );
-});
-
-app.get('/api-docs/swagger-ui.css', (req, res) => {
-  res.sendFile(
-    path.join(swaggerUiDist.getAbsoluteFSPath(), 'swagger-ui.css')
-  );
-});
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec)
+);
 
 // For that thing a little below
 let dbStatus = 'disconnected';
