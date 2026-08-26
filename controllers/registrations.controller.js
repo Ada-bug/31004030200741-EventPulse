@@ -59,10 +59,7 @@ const getMyRegistrations = asyncHandler(async (req, res) => {
 
   const registrations = await Registration
     .find({ attendee: userId })
-    .populate({
-      path: "event",
-      select: "title date location"
-    });
+    .populate("event");
 
   return res.status(200).json({
     status: "success",

@@ -1,0 +1,1622 @@
+{
+  "info": {
+    "_postman_id": "c87bbf66-3d8a-4018-a23d-2718c72d45b6",
+    "name": "EventPulse-Api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55894515",
+    "_collection_link": "https://go.postman.co/collection/55894515-c87bbf66-3d8a-4018-a23d-2718c72d45b6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"attendeeToken\", response.token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mary Doe\",\r\n    \"email\": \"Doey@female.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/auth/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\r\n    \"status\": \"success\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTg2MTc5OWQzZTFiYWU4NmQxMjY1M2QiLCJyb2xlIjoiYXR0ZW5kZWUiLCJpYXQiOjE3ODcxNzI3NjIsImV4cCI6MTc4Nzc3NzU2Mn0.1fn8dE8zdrnQen4-iT9oI85O4QyZZESpOgIEyHAO3-Y\",\r\n    \"data\": {\r\n        \"id\": \"6a861799d3e1bae86d12653d\",\r\n        \"name\": \"John Doe\",\r\n        \"email\": \"john@example.com\",\r\n        \"role\": \"attendee\"\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "attendee login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"attendeeToken\", response.token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"ahmed@example.com\",\r\n    \"password\":\"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"ahmed@example.com\",\r\n    \"password\":\"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\r\n    \"status\": \"success\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTg2MTZmMzk4YTU4NWQ4NzI2ODhmMjAiLCJyb2xlIjoiYXR0ZW5kZWUiLCJpYXQiOjE3ODcxNzI2MTksImV4cCI6MTc4Nzc3NzQxOX0.dD50bAXcGeM7u79G-mmn2RZVXZeskhvByi7DNKIoxL0\"\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "admin login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"adminToken\", response.token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "admin login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "227"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"e3-g1xKdwbSTAfvE6GZXXpczeUbIjU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 15:24:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YThkOGVmNzVkYjRiYTM4YzkwYTMxMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODc2NzE0OTMsImV4cCI6MTc4ODI3NjI5M30.44aImOQfJFDEcIB9mug8-eXr6azPamolAnZGLfHcB2s\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "getEvents",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getEvents",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"ahmed@example.com\",\r\n    \"password\":\"password123\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1998"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7ce-UEDYQlPXX3V4IRRfYG8AQAXS6Fk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 15:25:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"6a8d8efa5db4ba38c90a3107\",\n            \"title\": \"Node.js Workshop\",\n            \"description\": \"Learn how to build APIs with Node.js and MongoDB.\",\n            \"category\": {\n                \"name\": \"Technology\",\n                \"description\": \"Technology and software events\"\n            },\n            \"date\": \"2026-09-15T15:00:00.000Z\",\n            \"city\": \"Atlanta\",\n            \"venue\": \"Atlanta Convention Center\",\n            \"capacity\": 100,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T12:47:54.766Z\",\n            \"updatedAt\": \"2026-08-25T12:47:54.766Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6a8d8efa5db4ba38c90a3108\",\n            \"title\": \"Startup Meetup\",\n            \"description\": \"A meetup for entrepreneurs and startup founders.\",\n            \"category\": {\n                \"name\": \"Business\",\n                \"description\": \"Business and entrepreneurship events\"\n            },\n            \"date\": \"2026-10-01T14:00:00.000Z\",\n            \"city\": \"Paris\",\n            \"venue\": \"Carrousel du Louvre\",\n            \"capacity\": 150,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T12:47:54.767Z\",\n            \"updatedAt\": \"2026-08-25T12:47:54.767Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6a8d8efa5db4ba38c90a3109\",\n            \"title\": \"Live Music Night\",\n            \"description\": \"An evening of live music and entertainment.\",\n            \"category\": {\n                \"name\": \"Music\",\n                \"description\": \"Music and entertainment events\"\n            },\n            \"date\": \"2026-10-10T17:00:00.000Z\",\n            \"city\": \"Alexandria\",\n            \"venue\": \"Concert Hall\",\n            \"capacity\": 200,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T12:47:54.767Z\",\n            \"updatedAt\": \"2026-08-25T12:47:54.767Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6a8d8efa5db4ba38c90a310a\",\n            \"title\": \"Entrepreneurship & Innovation Summit\",\n            \"description\": \"A full-day event bringing together entrepreneurs, innovators, and aspiring founders to share ideas and explore new opportunities.\",\n            \"category\": {\n                \"name\": \"Business\",\n                \"description\": \"Business and entrepreneurship events\"\n            },\n            \"date\": \"2026-11-05T08:00:00.000Z\",\n            \"city\": \"Pasay\",\n            \"venue\": \"SMX Convention Center Manila\",\n            \"capacity\": 250,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T12:47:54.767Z\",\n            \"updatedAt\": \"2026-08-25T12:47:54.767Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"total\": 4,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getEvents ?startDate&endDate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events?startDate=2026-01-01&endDate=2026-04-30",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-04-30"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getEvents ?startDate&endDate",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/events?startDate=2026-01-01&endDate=2026-04-30",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-01-01"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1006"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3ee-4WYAfppUQVDbTExkVF2vYvYoLnc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:22:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"650000000000000000000101\",\n            \"title\": \"Tea Party\",\n            \"description\": \"A little hangout, tea and snacks included!\",\n            \"category\": {\n                \"name\": \"Business\",\n                \"description\": \"Business and entrepreneurship events\"\n            },\n            \"date\": \"2026-04-27T14:00:00.000Z\",\n            \"city\": \"New Mobotropolis\",\n            \"venue\": \"Ms Vanilla's Backyard\",\n            \"capacity\": 6,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T19:15:28.085Z\",\n            \"updatedAt\": \"2026-08-25T19:20:02.997Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6a8de9e92902d88594ddd0ab\",\n            \"title\": \"Resistance meeting\",\n            \"description\": \"A meetup to discuss what to do against Eggman's forces\",\n            \"category\": {\n                \"name\": \"Business\",\n                \"description\": \"Business and entrepreneurship events\"\n            },\n            \"date\": \"2026-04-27T14:00:00.000Z\",\n            \"city\": \"KnotHole\",\n            \"venue\": \"KnotHole Grand Library\",\n            \"capacity\": 50,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T19:15:53.717Z\",\n            \"updatedAt\": \"2026-08-25T19:15:53.717Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"total\": 2,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getEvents ?city",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events?city=Pasay",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "Pasay"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getEvents ?city",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/events?city=Pasay",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "key": "city",
+                      "value": "Pasay"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "652"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"28c-oquItImIgcKgWcWqMeggi4wDnbc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:12:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"650000000000000000000104\",\n            \"title\": \"Entrepreneurship & Innovation Summit\",\n            \"description\": \"A full-day event bringing together entrepreneurs, innovators, and aspiring founders to share ideas and explore new opportunities.\",\n            \"category\": {\n                \"name\": \"Business\",\n                \"description\": \"Business and entrepreneurship events\"\n            },\n            \"date\": \"2026-11-05T08:00:00.000Z\",\n            \"city\": \"Pasay\",\n            \"venue\": \"SMX Convention Center Manila\",\n            \"capacity\": 250,\n            \"organizer\": {\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"createdAt\": \"2026-08-25T19:15:28.086Z\",\n            \"updatedAt\": \"2026-08-25T19:15:28.086Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getEventById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/{{eventId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getEventById",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/events/{{eventId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events",
+                    "{{eventId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "485"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1e5-UJyBEheILgdE62RQ76SCM2MHs5Q\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 15:29:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"_id\": \"6a8d8efa5db4ba38c90a3107\",\n        \"title\": \"Node.js Workshop\",\n        \"description\": \"Learn how to build APIs with Node.js and MongoDB.\",\n        \"category\": {\n            \"name\": \"Technology\",\n            \"description\": \"Technology and software events\"\n        },\n        \"date\": \"2026-09-15T15:00:00.000Z\",\n        \"city\": \"Atlanta\",\n        \"venue\": \"Atlanta Convention Center\",\n        \"capacity\": 100,\n        \"organizer\": {\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\"\n        },\n        \"createdAt\": \"2026-08-25T12:47:54.766Z\",\n        \"updatedAt\": \"2026-08-25T12:47:54.766Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "createEvent",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Resistance meeting\",\r\n  \"description\": \"A meetup to discuss what to do against Eggman's forces\",\r\n  \"category\": \"650000000000000000000002\",\r\n  \"date\": \"2026-04-27T14:00:00.000Z\",\r\n  \"city\": \"KnotHole\",\r\n  \"venue\": \"KnotHole Grand Library\",\r\n  \"capacity\": 50,\r\n  \"organizer\": \"650000000000000000000011\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "createEvent",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Resistance meeting\",\r\n  \"description\": \"A meetup to discuss what to do against Eggman's forces\",\r\n  \"category\": \"650000000000000000000002\",\r\n  \"date\": \"2026-04-27T14:00:00.000Z\",\r\n  \"city\": \"KnotHole\",\r\n  \"venue\": \"KnotHole Grand Library\",\r\n  \"capacity\": 50,\r\n  \"organizer\": \"650000000000000000000011\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "493"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1ed-0XLKGvAAUaJSozZXH94zjCAncyE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 19:15:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"title\": \"Resistance meeting\",\n        \"description\": \"A meetup to discuss what to do against Eggman's forces\",\n        \"category\": {\n            \"name\": \"Business\",\n            \"description\": \"Business and entrepreneurship events\"\n        },\n        \"date\": \"2026-04-27T14:00:00.000Z\",\n        \"city\": \"KnotHole\",\n        \"venue\": \"KnotHole Grand Library\",\n        \"capacity\": 50,\n        \"organizer\": {\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\"\n        },\n        \"_id\": \"6a8de9e92902d88594ddd0ab\",\n        \"createdAt\": \"2026-08-25T19:15:53.717Z\",\n        \"updatedAt\": \"2026-08-25T19:15:53.717Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "updateEvent",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTg2MTZmMzk4YTU4NWQ4NzI2ODhmMWYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODcyMjk2MzEsImV4cCI6MTc4NzgzNDQzMX0.zLjA_vWa-JmTecnYOCiXcNts41wINAoJD4MtMmmwieA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Tea Party\",\r\n    \"description\": \"A little hangout, tea and snacks included!\",\r\n    \"category\": \"650000000000000000000002\",\r\n    \"date\": \"2026-04-27T14:00:00.000Z\",\r\n    \"city\": \"New Mobotropolis\",\r\n    \"venue\": \"Ms Vanilla's Backyard\",\r\n    \"capacity\": 6,\r\n    \"organizer\": \"650000000000000000000011\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/{{eventId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "updateEvent",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Tea Party\",\r\n    \"description\": \"A little hangout, tea and snacks included!\",\r\n    \"category\": \"650000000000000000000002\",\r\n    \"date\": \"2026-04-27T14:00:00.000Z\",\r\n    \"city\": \"New Mobotropolis\",\r\n    \"venue\": \"Ms Vanilla's Backyard\",\r\n    \"capacity\": 6,\r\n    \"organizer\": \"650000000000000000000011\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/events/{{eventId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events",
+                    "{{eventId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "478"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1de-+LneLVpHgc8woo1vcYBBGuvBcek\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 19:20:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"_id\": \"650000000000000000000101\",\n        \"title\": \"Tea Party\",\n        \"description\": \"A little hangout, tea and snacks included!\",\n        \"category\": {\n            \"name\": \"Business\",\n            \"description\": \"Business and entrepreneurship events\"\n        },\n        \"date\": \"2026-04-27T14:00:00.000Z\",\n        \"city\": \"New Mobotropolis\",\n        \"venue\": \"Ms Vanilla's Backyard\",\n        \"capacity\": 6,\n        \"organizer\": {\n            \"name\": \"Admin User\",\n            \"email\": \"admin@example.com\"\n        },\n        \"createdAt\": \"2026-08-25T19:15:28.085Z\",\n        \"updatedAt\": \"2026-08-25T19:20:02.997Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "deleteEvent",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTg2MTZmMzk4YTU4NWQ4NzI2ODhmMWYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODcyMjk2MzEsImV4cCI6MTc4NzgzNDQzMX0.zLjA_vWa-JmTecnYOCiXcNts41wINAoJD4MtMmmwieA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/{{deleteableEventId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{deleteableEventId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "deleteEvent",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/events/{{deleteableEventId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events",
+                    "{{deleteableEventId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "32"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"20-bff5r/a5MyNNWy9hjn8a8pOLDxA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 19:23:13 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Registrations",
+      "item": [
+        {
+          "name": "registerForEvent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "  \"registrationId\",\r",
+                  "  response.data._id\r",
+                  ");\r",
+                  "\r",
+                  "console.log(\"Saved registrationId:\", response.data._id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{attendeeToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"event\": \"{{eventId}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/registrations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "registrations"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "registerForEvent",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event\": \"{{eventId}}\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/registrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "registrations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "221"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"dd-AE5qef4M3gQYxoKBOKUJQntelng\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:24:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"event\": \"650000000000000000000101\",\n        \"attendee\": \"6a8d8ef75db4ba38c90a3102\",\n        \"_id\": \"6a8df9f1ba4203fc28a18c6d\",\n        \"createdAt\": \"2026-08-25T20:24:17.980Z\",\n        \"updatedAt\": \"2026-08-25T20:24:17.980Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getMyRegistrations",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{attendeeToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/registrations/my",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "registrations",
+                "my"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getMyRegistrations",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/registrations/my",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "registrations",
+                    "my"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "578"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"242-Iqe4B5/a248Ifq05KzYnmgRUhRg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 19:48:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"6a8deefd9494ace2e2dc8763\",\n            \"event\": {\n                \"_id\": \"650000000000000000000101\",\n                \"title\": \"Tea Party\",\n                \"description\": \"A little hangout, tea and snacks included!\",\n                \"category\": \"650000000000000000000002\",\n                \"date\": \"2026-04-27T14:00:00.000Z\",\n                \"city\": \"New Mobotropolis\",\n                \"venue\": \"Ms Vanilla's Backyard\",\n                \"capacity\": 6,\n                \"organizer\": \"650000000000000000000011\",\n                \"createdAt\": \"2026-08-25T19:15:28.085Z\",\n                \"updatedAt\": \"2026-08-25T19:20:02.997Z\",\n                \"__v\": 0\n            },\n            \"attendee\": \"6a8d8ef75db4ba38c90a3102\",\n            \"createdAt\": \"2026-08-25T19:37:33.579Z\",\n            \"updatedAt\": \"2026-08-25T19:37:33.579Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "cancelRegistration",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{attendeeToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/registrations/{{registrationId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "registrations",
+                "{{registrationId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "cancelRegistration",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/registrations/{{registrationId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "registrations",
+                    "{{registrationId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "68"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"44-S/6EC9O+MYi2pmoieNIpvsKn7OQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:00:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Registration cancelled successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Announcements",
+      "item": [
+        {
+          "name": "createAnnouncement",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"eventId\": \"{{eventId}}\",\r\n    \"text\": \"what *o*\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/announcements",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "announcements"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "createAnnouncement",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"eventId\": \"{{eventId}}\",\r\n    \"text\": \"what *o*\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/announcements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "announcements"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "237"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"ed-XgC/dPSWKiFur0Prbu/vWU2lVuI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:28:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"event\": \"650000000000000000000101\",\n        \"sender\": \"650000000000000000000011\",\n        \"text\": \"what *o*\",\n        \"_id\": \"6a8dfaecba4203fc28a18c6e\",\n        \"createdAt\": \"2026-08-25T20:28:28.646Z\",\n        \"updatedAt\": \"2026-08-25T20:28:28.646Z\",\n        \"__v\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getAnnouncements",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{attendeeToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/announcements/{{eventId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "announcements",
+                "{{eventId}}"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getAnnouncements",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/announcements/{{eventId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "announcements",
+                    "{{eventId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "295"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"127-Y3MmnRmPps6/k6NqKMCBRxbmZPg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 25 Aug 2026 20:30:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"6a8dfaecba4203fc28a18c6e\",\n            \"event\": \"650000000000000000000101\",\n            \"sender\": {\n                \"_id\": \"650000000000000000000011\",\n                \"name\": \"Admin User\",\n                \"email\": \"admin@example.com\"\n            },\n            \"text\": \"what *o*\",\n            \"createdAt\": \"2026-08-25T20:28:28.646Z\",\n            \"updatedAt\": \"2026-08-25T20:28:28.646Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Health check",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "86"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"56-/Fel9sIxO1QTda4ySBy+liGp4hE\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 25 Aug 2026 13:33:35 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ok\",\n    \"environment\": \"development\",\n    \"uptime\": 57.2599688,\n    \"database\": \"connected\"\n}"
+        }
+      ]
+    }
+  ]
+}

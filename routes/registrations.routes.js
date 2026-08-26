@@ -8,7 +8,7 @@ router.post(
   '/',
   requireAuth,
   [
-    body('eventId')
+    body('event')
       .isMongoId()
       .withMessage('eventId must be a valid MongoId'),
   ],
