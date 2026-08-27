@@ -9,12 +9,13 @@ const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/AppError');
-const app = express();
 
-const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 const swaggerUiDist = require('swagger-ui-dist');
+const path = require('path');
+
+const app = express();
 
 // Swagger static assets
 app.get('/api-docs/swagger-ui.css', (req, res) => {
@@ -48,11 +49,10 @@ app.use(
   swaggerUi.setup(swaggerSpec)
 );
 
-
 // For that thing a little below
 let dbStatus = 'disconnected';
 
-// For Vercel ig
+// For Vercel
 app.use(async (req, res, next) => {
   try {
     await connectDB();

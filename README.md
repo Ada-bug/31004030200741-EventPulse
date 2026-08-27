@@ -36,6 +36,122 @@ EventPulse is a Node.js and Express-based event management API that allows users
 - Mongoose
 - Socket.IO
 
+## Live Demo
+
+The project is deployed on Vercel and can be accessed here:
+
+**[EventPulse — Live Demo](https://31004030200741-eventpulse.vercel.app?_vercel_share=7mv99J9JQRJKG3elbdc4dhbbd11frLEZ)**
+
+## Local Installation Steps
+
+Follow these steps to install and run **31004030200741-EventPulse** locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone <https://github.com/Ada-bug/31004030200741-EventPulse>
+cd 31004030200741-EventPulse
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up the `.env` File
+
+Create a `.env` file in the root directory of the project and add the required environment variables.
+
+```env
+DATABASE_URL=mongodb+srv://username:<passord>@cluster0.xezz4i2.mongodb.net/?appName=Cluster0
+PORT=3000
+NODE_ENV=development
+JWT_SECRET=<your jwt secret>
+JWT_EXPIRES_IN=7d
+```
+
+Replace the example values with the appropriate values for your environment.
+
+> **Note:** Do not commit your `.env` file to GitHub.
+
+### 4. Seed the Database
+
+```bash
+npm run seed
+```
+
+### 5. Run the Development Server
+
+```bash
+npm run dev
+```
+
+## Notes:
+- Yes, this is long. And no, you don't have to read all of it.
+
+- If you go to the `/api-docs`, you'll find that the css doesn't load properly, but I've
+- spent like 4 hours trying to debug and not getting anywhere
+
+- If you want proof, then look at my commit history :D
+
+- In my postman testing files, you'll find (that is, if you open them) that I only
+- documemted two or three filtering query strings (I tested all of them when but only 3 are
+- saved to the file).
+
+
+## Running the Application
+
+### Development
+
+Start the development server with Nodemon:
+
+```bash
+npm run dev
+```
+
+### Production
+
+Start the application with Node:
+
+```bash
+npm start
+```
+
+By default, the server runs on:
+
+```text
+http://localhost:3000
+```
+
+The port can be changed using the `PORT` environment variable.
+
+## Database Seeding
+
+EventPulse includes a seed script for populating the database with initial data.
+
+Run:
+
+```bash
+npm run seed
+```
+
+The seed script clears the following collections before inserting the seed data:
+
+- Messages
+- Registrations
+- Events
+- Categories
+- Users
+
+Seed data is loaded from:
+
+```text
+data/seedData.js
+```
+
+> **Warning:** Running `npm run seed` deletes existing users, categories, events, registrations, and messages from the database.
+
 ### Authentication & Security
 
 - JSON Web Tokens (JWT)
@@ -53,7 +169,7 @@ EventPulse is a Node.js and Express-based event management API that allows users
 
 ## Project Structure
 
-```text
+`
 EventPulse/
 ├── config/
 │   ├── appConfig.js
@@ -78,7 +194,10 @@ EventPulse/
 │   ├── registration.model.js
 │   └── user.model.js
 ├── postman/
+│   ├── EventPulse API Dev.postman_environment.json
+│   └── EventPulse-Api.postman_collection.json
 ├── public/
+│   └── index.html
 ├── routes/
 │   ├── announcements.routes.js
 │   ├── authRoutes.js
@@ -86,13 +205,21 @@ EventPulse/
 │   └── registrations.routes.js
 ├── tests/
 │   ├── integration/
+│   |   └── events.test.js
 │   └── unit/
+│       ├── AppError.test.js
+│       └── asyncHandler.test.js
 ├── utils/
 │   ├── AppError.js
 │   └── asyncHandler.js
 ├── app.js
 ├── seed.js
+├── .gitignore
+├── .env.example
+├── vercel.js
+├── package-lock.json
 └── package.json
+`
 
 ## Data Models
 
@@ -165,102 +292,6 @@ Each message contains:
 - Creation/update timestamps
 
 Although the underlying model is named `Message`, it is exposed through the API as an **announcement**.
-
-## Installation
-
-Navigate to the project directory:
-
-```bash
-cd 31004030200741-EventPulse
-```
-
-Install the project dependencies:
-
-```bash
-npm install
-```
-
-## Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-PORT=3000
-NODE_ENV=development
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=7d
-```
-
-### Environment Variables
-
-| Variable | Description | Default |
-|---|---|---|
-| `PORT` | Port used by the server | `3000` |
-| `NODE_ENV` | Application environment | `development` |
-| `MONGO_URI` | MongoDB connection string | Required |
-| `JWT_SECRET` | Secret used to sign JWTs | Required |
-| `JWT_EXPIRES_IN` | JWT expiration duration | `7d` |
-
-> **Important:** Never commit your `.env` file or expose your `JWT_SECRET`.
-
-## Running the Application
-
-### Development
-
-Start the development server with Nodemon:
-
-```bash
-npm run dev
-```
-
-### Production
-
-Start the application with Node:
-
-```bash
-npm start
-```
-
-By default, the server runs on:
-
-```text
-http://localhost:3000
-```
-
-The port can be changed using the `PORT` environment variable.
-
-## Database Seeding
-
-EventPulse includes a seed script for populating the database with initial data.
-
-Run:
-
-```bash
-npm run seed
-```
-
-The seed script clears the following collections before inserting the seed data:
-
-- Messages
-- Registrations
-- Events
-- Categories
-- Users
-
-Seed data is loaded from:
-
-```text
-data/seedData.js
-```
-
-> **Warning:** Running `npm run seed` deletes existing users, categories, events, registrations, and messages from the database.
-
-## Authentication
-
-EventPulse uses JWT-based bearer authentication.
 
 ### Register
 
