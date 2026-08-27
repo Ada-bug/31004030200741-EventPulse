@@ -1,8 +1,9 @@
-// The seed file gets too crowded with the seed data so i added it seperately
+const mongoose = require('mongoose');
 
 module.exports = {
   users: [
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000011'),
       name: 'Admin User',
       email: 'admin@example.com',
       password: 'password123',
@@ -24,14 +25,17 @@ module.exports = {
 
   categories: [
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000001'),
       name: 'Technology',
       description: 'Technology and software events'
     },
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000002'),
       name: 'Business',
       description: 'Business and entrepreneurship events'
     },
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000003'),
       name: 'Music',
       description: 'Music and entertainment events'
     }
@@ -39,26 +43,29 @@ module.exports = {
 
   events: [
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000101'),
       title: 'Node.js Workshop',
       description: 'Learn how to build APIs with Node.js and MongoDB.',
       category: 'Technology',
       organizer: 'admin@example.com',
       date: '2026-09-15T18:00:00',
-      city: 'Alexandria',
-      venue: 'Alexandria Library',
+      city: 'Atlanta',
+      venue: 'Atlanta Convention Center',
       capacity: 100
     },
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000102'),
       title: 'Startup Meetup',
       description: 'A meetup for entrepreneurs and startup founders.',
       category: 'Business',
       organizer: 'admin@example.com',
       date: '2026-10-01T17:00:00',
-      city: 'Alexandria',
-      venue: 'Bibliotheca Alexandria',
+      city: 'Paris',
+      venue: 'Carrousel du Louvre',
       capacity: 150
     },
     {
+      _id: new mongoose.Types.ObjectId('650000000000000000000103'),
       title: 'Live Music Night',
       description: 'An evening of live music and entertainment.',
       category: 'Music',
@@ -69,14 +76,16 @@ module.exports = {
       capacity: 200
     },
     {
-    title: 'Entrepreneurship & Innovation Summit',
-    description: 'A full-day event bringing together entrepreneurs, innovators, and aspiring founders to share ideas and explore new opportunities.',
-    category: 'Business',
-    organizer: 'admin@example.com',
-    date: '2026-11-05T10:00:00',
-    city: 'Alexandria',
-    venue: 'San Stefano Grand Plaza',
-    capacity: 250
+      _id: new mongoose.Types.ObjectId('650000000000000000000104'),
+      title: 'Entrepreneurship & Innovation Summit',
+      description:
+        'A full-day event bringing together entrepreneurs, innovators, and aspiring founders to share ideas and explore new opportunities.',
+      category: 'Business',
+      organizer: 'admin@example.com',
+      date: '2026-11-05T10:00:00',
+      city: 'Pasay',
+      venue: 'SMX Convention Center Manila',
+      capacity: 250
     }
   ]
 };

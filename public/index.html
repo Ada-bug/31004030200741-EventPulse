@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Announcement Tester</title>
+</head>
+
+<body>
+
+<h1>Announcement Tester</h1>
+
+<input id="eventId" placeholder="Enter Event ID">
+<button onclick="connectToEvent()">Connect</button>
+
+<h2>Announcements</h2>
+<div id="messages"></div>
+
+
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+<script>
+    const API_URL = "http://localhost:3000";
+
+    const socket = io(API_URL);
+
+
+    socket.on("connect", () => {
+        console.log("Socket connected:", socket.id);
+    });
+
+
+    async function connectToEvent() {
+        const eventId = document.getElementById("eventId").value;
+
+        if (!eventId) {
+            alert("Enter an event ID");
+            return;
+        }
+
+
+        // 1. Fetch old announcements from database
+        try {
+            const response = await fetch(
+                `${API_URL}/api/announcements/${eventId}`
+            );
+
+            const result = await response.json();
+
+            console.log("Old messages:", result);
+
+            document.getElementById("messages").innerHTML = "";
+
+
+            result.data.forEach(message => {
+                displayMessage(message);
+            });
+
+        } catch (error) {
+            console.error("Failed to load old messages:", error);
+        }
+
+
+        // 2. Join Socket.io room
+        socket.emit("join-event", eventId);
+
+        console.log("Joined room:", eventId);
+    }
+
+
+
+    // 3. Listen for new announcements
+    socket.on("announcement", (message) => {
+
+        console.log("New announcement:", message);
+
+        displayMessage(message);
+
+    });
+
+
+
+    function displayMessage(message) {
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <p>
+                <strong>
+                    ${message.sender?.name || "Admin"}
+                </strong>
+                :
+                ${message.text}
+            </p>
+        `;
+
+        document
+            .getElementById("messages")
+            .appendChild(div);
+    }
+
+
+    socket.on("disconnect", () => {
+        console.log("Socket disconnected");
+    });
+
+</script>
+
+</body>
+</html>
